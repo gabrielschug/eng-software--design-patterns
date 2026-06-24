@@ -1,5 +1,5 @@
 # eng-software--design-patterns
-## 1. Singleton
+## Singleton
 
 ### O que é?
 O Singleton é um padrão de projeto criacional que garante que uma classe possua apenas uma única instância durante toda a execução do sistema, fornecendo um ponto global de acesso a essa instância.
