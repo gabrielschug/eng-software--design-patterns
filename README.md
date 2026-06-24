@@ -106,5 +106,84 @@ config3 = ConfiguracaoSistema()
 print(config1 == config2)
 ```
 
+## Prototype
+
+### O que é?
+O Prototype é um padrão de projeto criacional que permite copiar objetos existentes sem fazer seu código ficar dependente de suas classes 
+
+## Quais problemas ele resolve
+O padrão Prototype resolve o problema de criar objetos complexos ou semelhantes repetidamente. Em vez de construir cada objeto do zero, ele permite fazer uma cópia de um objeto já existente, economizando tempo, reduzindo a repetição de código e facilitando a criação de várias instâncias com as mesmas características
+
+## Como ele atua
+Na prática, o padrão Prototype funciona criando um objeto base já configurado e depois gerando novos objetos a partir dele usando clonagem. Assim, em vez de usar new e configurar tudo de novo, você apenas chama um método como clone(), que cria uma cópia do objeto original, podendo depois ajustar alguns detalhes se necessário. 
+
+## Pontos positivos e negativos
+Pontos Positivos:
+ Mais rápido para criar objetos complexos.
+ Evita repetir código de inicialização.
+ Facilita a criação de muitos objetos semelhantes.
+ Reduz o acoplamento com classes concretas.
+
+Pontos Negativos:
+ Implementar a clonagem pode ser complexo.
+ Objetos com referências a outros objetos podem gerar problemas de cópia.
+ Alteração na estrutura da classe podem exigir ajustes no método de clonagem.
+ Pode aumentar a dificuldade de manutenção se houver muitas regras de clonagem.
+
+## Codigo sem o padrão
+```python
+class Personagem:
+    def __init__(self, nome, classe, inventario):
+        self.nome = nome
+        self.classe = classe
+        self.inventario = inventario
+
+    def __str__(self):
+        return f"{self.nome} [{self.classe}] - Inventário: {self.inventario}"
+
+guerreiro_base = Personagem("Soldado", "Guerreiro", ["Espada de Madeira", "Escudo"])
+
+heroi = Personagem(
+    nome=guerreiro_base.nome, 
+    classe=guerreiro_base.classe, 
+    inventario=list(guerreiro_base.inventario) 
+)
+
+heroi.nome = "Arthur"
+heroi.inventario.append("Poção de Vida")
+
+print("Objeto Original:", guerreiro_base)
+print("Novo Objeto:    ", heroi)
+```
+
+```python
+class Prototype:
+    def clone(self):
+        return copy.deepcopy(self)
+
+class Personagem(Prototype):
+    def __init__(self, nome, classe, inventario):
+        self.nome = nome
+        self.classe = classe
+        self.inventario = inventario # Uma lista (objeto mutável)
+
+    def __str__(self):
+        return f"{self.nome} [{self.classe}] - Inventário: {self.inventario}"
+
+guerreiro_base = Personagem("Soldado", "Guerreiro", ["Espada de Madeira", "Escudo"])
+
+heroi = guerreiro_base.clone()
+
+heroi.nome = "Arthur"
+heroi.inventario.append("Poção de Vida")
+
+print("Protótipo Original:", guerreiro_base)
+print("Clone Modificado:  ", heroi)
+```
+
+
+
+
+
 
 
