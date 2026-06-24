@@ -85,7 +85,7 @@ print(config1 == config2)
 print(config2 == config3)
 ```
 
-### Sem o Padrão
+## Sem o Padrão
 ```python
 # singleton/sem_padrao/configuracao.py
 
