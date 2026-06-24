@@ -155,7 +155,7 @@ heroi.inventario.append("Poção de Vida")
 print("Objeto Original:", guerreiro_base)
 print("Novo Objeto:    ", heroi)
 ```
-
+## Codigo com o padrão
 ```python
 class Prototype:
     def clone(self):
