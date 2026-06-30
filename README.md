@@ -245,9 +245,9 @@ Ao invés do sistema principal criar o objeto de forma direta e engessada, o sis
 
 #### **O perigo do acoplamento forte gerado pelo comando ```new```**
 
-**Quando você cria um objeto instanciando a classe diretamente no seu código principal (ex: `Atividade a = new Corrida()`), o seu programa fica rigidamente amarrado àquela classe específica**.
+**Quando você cria um objeto instanciando a classe diretamente no seu código principal (ex: `Atividade a = new Corrida()`), o seu programa fica rigidamente amarrado àquela classe específica
 
-Se no futuro precisar suportar ```Atividade a = new Pedalada()```, será obrigado a caçar todas as ocorrências do comando **`new` espalhadas pelo sistema e adicionar blocos gigantes de verificações condicionais (`if/else`ou`switch`) para decidir qual classe instanciar**.
+Se no futuro precisar suportar ```Atividade a = new Pedalada()```, será obrigado a caçar todas as ocorrências do comando **`new` espalhadas pelo sistema e adicionar blocos gigantes de verificações condicionais (`if/else`ou`switch`) para decidir qual classe instanciar
 
 **Resultado** → código sujo → difícil de manter →  alto risco de quebrar o que já estava funcionando perfeitamente
 
