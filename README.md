@@ -184,47 +184,6 @@ print("Clone Modificado:  ", heroi)
 
 > Aluno: Gabriel Schug
 
-### ⁉️ O que é?
-
-É um **padrão de projeto criacional**.
-
-Ele define uma interface (um molde) para a criação de um objeto, mas **delega às subclasses a decisão de qual classe exata será instanciada**.
-
-Ao invés do sistema principal criar o objeto de forma direta e engessada, o sistema delega esta tarefa para uma "fábrica" especializada, permitindo que o programa se mantenha independente de como seus objetos são realmente construídos.
-
-### 💡 Quais problemas ele resolve?
-
-#### **O perigo do acoplamento forte gerado pelo comando ```new```**
-
-**Quando você cria um objeto instanciando a classe diretamente no seu código principal (ex: `Atividade a = new Corrida()`), o seu programa fica rigidamente amarrado àquela classe específica**.
-
-Se no futuro precisar suportar ```Atividade a = new Pedalada()```, será obrigado a caçar todas as ocorrências do comando **`new` espalhadas pelo sistema e adicionar blocos gigantes de verificações condicionais (`if/else`ou`switch`) para decidir qual classe instanciar**.
-
-**Resultado** → código sujo → difícil de manter →  alto risco de quebrar o que já estava funcionando perfeitamente
-
-## ⚙️ Como ele atua
-
-Substitui as chamadas diretas do construtor (```new```) por chamadas a um **método-fábrica especial**.
-
-Os objetos ainda são criados usando o `new`, mas de forma isolada, **dentro do método-fábrica**.
-
-**Ele se organiza através de 4 participantes principais**:
-
-* **Produto (A Interface):** Uma regra comum que todos os objetos criados devem seguir.
-* **Produtos Concretos:** As implementações reais dessa interface (as classes específicas).
-* **Criador (O Gerenciador Base):** Uma classe que possui a lógica central do sistema e declara o método-fábrica abstrato que devolverá um Produto.
-* **Criadores Concretos (As Fábricas):** Subclasses que sobrescrevem o método-fábrica para devolver um Produto Concreto específico.
-
-## 💪 Pontos Fortes
-
-* **Elimina o acoplamento forte:** O código principal lida apenas com interfaces, ficando isolado das classes de implementação específicas**.**
-* Permite adicionar novos produtos (novas atividades físicas) de forma extremamente fácil, sem quebrar o código já existente**.**
-* Move a criação de objetos para um único local (fábricas), facilitando a manutenção geral do software
-
-## ⚠️ Pontos Fracos
-
-**Ele pode exigir a introdução de muitas subclasses novas no sistema**. Isso acontece porque, para cada novo produto (modalidade de exercício) criado, o desenvolvedor pode ser forçado a criar uma subclasse de criador (fábrica) correspondente apenas para instanciá-lo**. Isso faz a quantidade de arquivos e classes do projeto crescer rapidamente.
-
 ## 🔄 Sem o Padrão
 
 - o código principal do aplicativo cria objetos de forma direta usando o comando `new`.
@@ -273,6 +232,38 @@ O Problema:
 
 - Ao adicionar um novo esporte, o programador abre a classe **`TreinoApp` e adiciona mais um `else if`.
 - Viola regras de um bom design, pois o código principal precisa ser modificado constantemente e corre o risco de quebrar o que já funciona
+
+### ⁉️ O que é?
+
+É um **padrão de projeto criacional**.
+
+Ele define uma interface (um molde) para a criação de um objeto, mas **delega às subclasses a decisão de qual classe exata será instanciada**.
+
+Ao invés do sistema principal criar o objeto de forma direta e engessada, o sistema delega esta tarefa para uma "fábrica" especializada, permitindo que o programa se mantenha independente de como seus objetos são realmente construídos.
+
+### 💡 Quais problemas ele resolve?
+
+#### **O perigo do acoplamento forte gerado pelo comando ```new```**
+
+**Quando você cria um objeto instanciando a classe diretamente no seu código principal (ex: `Atividade a = new Corrida()`), o seu programa fica rigidamente amarrado àquela classe específica**.
+
+Se no futuro precisar suportar ```Atividade a = new Pedalada()```, será obrigado a caçar todas as ocorrências do comando **`new` espalhadas pelo sistema e adicionar blocos gigantes de verificações condicionais (`if/else`ou`switch`) para decidir qual classe instanciar**.
+
+**Resultado** → código sujo → difícil de manter →  alto risco de quebrar o que já estava funcionando perfeitamente
+
+## ⚙️ Como ele atua
+
+Substitui as chamadas diretas do construtor (```new```) por chamadas a um **método-fábrica especial**.
+
+Os objetos ainda são criados usando o `new`, mas de forma isolada, **dentro do método-fábrica**.
+
+**Ele se organiza através de 4 participantes principais**:
+
+* **Produto (A Interface):** Uma regra comum que todos os objetos criados devem seguir.
+* **Produtos Concretos:** As implementações reais dessa interface (as classes específicas).
+* **Criador (O Gerenciador Base):** Uma classe que possui a lógica central do sistema e declara o método-fábrica abstrato que devolverá um Produto.
+* **Criadores Concretos (As Fábricas):** Subclasses que sobrescrevem o método-fábrica para devolver um Produto Concreto específico.
+
 
 ## Com o Padrão
 
@@ -336,6 +327,15 @@ A solução:
 - 🔀 Flexibilidade 🚀 Escala
 
 
+## 💪 Pontos Fortes
+
+* **Elimina o acoplamento forte:** O código principal lida apenas com interfaces, ficando isolado das classes de implementação específicas**.**
+* Permite adicionar novos produtos (novas atividades físicas) de forma extremamente fácil, sem quebrar o código já existente**.**
+* Move a criação de objetos para um único local (fábricas), facilitando a manutenção geral do software
+
+## ⚠️ Pontos Fracos
+
+**Ele pode exigir a introdução de muitas subclasses novas no sistema**. Isso acontece porque, para cada novo produto (modalidade de exercício) criado, o desenvolvedor pode ser forçado a criar uma subclasse de criador (fábrica) correspondente apenas para instanciá-lo**. Isso faz a quantidade de arquivos e classes do projeto crescer rapidamente.
 
 
 
