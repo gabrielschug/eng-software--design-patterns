@@ -271,7 +271,7 @@ class TreinoApp {
 
 O Problema:
 
-- Ao adicionar um novo esporte, o programador abre a classe **`StravaApp` e adiciona mais um `else if`.
+- Ao adicionar um novo esporte, o programador abre a classe **`TreinoApp` e adiciona mais um `else if`.
 - Viola regras de um bom design, pois o código principal precisa ser modificado constantemente e corre o risco de quebrar o que já funciona
 
 ## Com o Padrão
